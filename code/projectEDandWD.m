@@ -1,0 +1,36 @@
+clear;
+load heart;
+mysampler=sampler(data,labels);
+[tr te]=mysampler.split(1,5);
+for i=3:100
+    tstart1=tic;
+%     labels_predict1=myknn_Ed(te.data,tr.data,tr.labels,i);
+%     e1(i)=myerr(labels_predict1,te.labels);
+    model=knn('k',i);
+    model.train(tr.data,tr.labels);
+    e1(i)=model.test(te.data,te.labels).acc();
+    telapsed1(i)=toc(tstart1);
+    tstart2=tic;
+    labels_predict2=myknn_Wd(te.data,tr.data,tr.labels,i);
+    e2(i)=myerr(labels_predict2,te.labels);
+    telapsed2(i)=toc(tstart2);
+end
+plot(3:100,e1(:,3:100),'b');
+hold on;
+plot(3:100,e2(:,3:100),'r--');
+legend('Euclidean Distance','Weighted Distance');
+title('error rate for different distance functions in knn method');
+xlabel('k');
+ylabel('error');
+grid on;
+hold off;
+figure();
+plot(3:100,telapsed1(:,3:100),'b');
+hold on;
+plot(3:100,telapsed2(:,3:100),'r--');
+legend('Euclidean Distance','Weighted Distance');
+title('training time for different distance functions in knn method');
+xlabel('k');
+ylabel('training time');
+grid on;
+hold off;

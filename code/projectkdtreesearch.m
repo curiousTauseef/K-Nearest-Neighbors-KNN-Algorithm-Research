@@ -1,0 +1,31 @@
+clear;
+clc;
+load dataa;
+kdtree=buildKDtree(data);
+for i=1:20
+    mysampler=sampler(data,labels);
+    [tr te]=mysampler.split(i,20);
+    tstart1=tic;
+    predict_labels=mykdtreesearch(te.data,tr.data,tr.labels,kdtree);
+    e1(i)=myerr( predict_labels,te.labels );
+    telapsed1(i)=toc(tstart1);
+    tstart2=tic;
+    labels_predict1=myknn_Ed(te.data,tr.data,tr.labels,30);
+    e2(i)=myerr(labels_predict1,te.labels);
+    telapsed2(i)=toc(tstart2);
+end
+plot(1:size(e1,2),e1,'r--');
+hold on;
+plot(1:size(e2,2),e2,'b');
+title('error rate for different data subset in kdtree search');
+legend('KNN Based on KD Tree','Traditional KNN');
+xlabel('dataset');
+ylabel('error');
+hold off;
+figure();
+plot(1:size(telapsed1,2),telapsed1,'r--');
+hold on;
+plot(1:size(telapsed2,2),telapsed2,'b');
+title('training time for different data subset in kdtree search');
+xlabel('dataset');
+ylabel('training time');
