@@ -198,7 +198,10 @@ However, there are still some drawbacks in the improved KNN classifier such as t
 
 # References
 Gou, J. Du, L. Zhang, Y and Xiong, T.(2012) A New Distance-weighted k -nearest Neighbour or Classifier Journal of Information & Computational Science 9: 6 (2012) 1429–1436.
+
 Zhang, J. and Mani, I.(2003)  kNN approach to unbalanced data distributions a case study involving information extraction Proceedings of Workshop on Learning from Imbalanced Datasets. 2003.
+
 Zhang, M. and Zhou Z.(2007) ML-KNN: A lazy learning approach to multi-label learning. Pattern recognition, 2007, 40(7): 2038-2048.
+
 Zhang, S. (2012) Nearest neighbor selection for iteratively kNN imputation. Journal of Systems and Software, 2012, 85(11): 2541-2552.
 
