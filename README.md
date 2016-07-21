@@ -138,4 +138,67 @@ Then it is needed to change the dataset to further research the K-selection. Cho
 
 ![](img/error rate K-selection breast.jpg)
 
+*Figure 7*. Error rate for K value from 1-150 in KNN classifier.
+
+Differently, the error rate almost keeps increasing with the growth of K. Therefore, the lowest error rate is about 0.13 when K is 3. Similarly, consider training time for K value in dataset breast:
+
+![](img/trainning time K-selection breast.jpg)
+
+*Figure 8*. Training time for K value from 1-150 in KNN classifier. 
+
+It can be seen the same trend that increasing training time when K is increasing. And the extremums appear at 10, 80 and 90. So 3 is the best K to predict test example.
+
+## 3.2 Weighted Distance KNN Classifier
+
+From chapter 2, the algorithm of weighted distance KNN classifier has been introduced. Choose dataset heart to implement comparison between Euclidean distance function and weighted distance function.
+
+![](img/error rate EDandWD.jpg)
+
+*Figure 9*. Error rate for 2 distance function in KNN classifier with increasing of K.
+
+Compared with Euclidean distance function, it is obvious that KNN classifier with weighted distance function performs much better than KNN with Euclidean distance. Basically, comparing the error rate of KNN classifier with Euclidean distance, which of KNN with hybrid distance is lower in the K value from 1 to 100. Similarly, consider the training time of 2 different KNN classifier:
+
+![](img/training time EDandWD.jpg)
+
+Figure 10. Training time for 2 distance function in KNN classifier with increasing of K
+
+Due to the complexity of weighted distance function, KNN classifier does not spends much less time on training and predicting test sample. Therefore, the speed of KNN classifier with weighted distance is still higher than traditional KNN classifier.
+
+## 3.3 KD Tree Data Structure
+
+KD tree is a good data structure to represent the data. The key on how to implement KNN classifier using KD tree is the KD tree construction. This project implements KNN classifier based on KD tree compared with traditional KNN classifier and calculate the error rate. Meanwhile, it adopts cross-validation to split data into 20 folds, which can get the stable and reliable result. Choose K for 30:
+
+![](img/error rate KDtree.jpg)
+
+*Figure 11*. Error rate for different data subset in KNN classifier based on KD tree compared with traditional KNN classifier.
+
+According to the line chart, KNN classifier based on KD tree performs better than traditional KNN classifier in most data subset.
+
+# 4.  Analysis
+
+## 4.1  K-selection
+
+The experiments show that K value is an important key to improve error rate and training time in KNN classifier. This project chooses the best K value by calculating error rate and training time in each K from 1 to 150. 
+From the experimental results, it can be seen that the best K value if different in different dataset. Therefore, calculating the error rate with different K value can help to determine the best K.
+
+## 4.2  Weighted Distance 
+KNN with weighted distance greatly improves the accuracy of experiments because that the more near neighbour play a more important role in predicting the test example. Weighted distance calculation help to determine which property is strong correlated and which property is weak correlated or uncorrelated.
+Weight added to predict test sample means more complex computation in KNN classifier. But complexity does not affect the running speed.
+
+## 4.3  KD Tree
+KD tree is a clear data structure. KNN classifier based on KD tree perform better than traditional KNN and make search the nearest neighbour efficiently. Unfortunately, this project dose not achieve the efficiency of KD tree to predict test sample due to the large number of backtracking affect the running speed.
+
+# 5.  Conclusion
+
+This project systematically introduces the basic principle of KNN classifier, as well as the makes improvements for the shortcomings of KNN classifier. These improvements include K-selection, weighted distance and KD tree data structure.
+
+Experiments prove that a suitable K value selection can obviously improve the performance of KNN classifier, especially in reducing error rate and training time. Furthermore, KNN classifier with weighted distance calculation spend less time on training data and can make improvement in lower error rate. KD tree is a good data structure to enhance performance but a large number of data backtracking will result in low running speed. 
+
+However, there are still some drawbacks in the improved KNN classifier such as training time. This project does not significantly improve the running speed.  In the future, the potential work needed is to overcome the shortcoming of speed and research further to find more efficient algorithms for machine learning. 
+
+# References
+Gou, J. Du, L. Zhang, Y and Xiong, T.(2012) A New Distance-weighted k -nearest Neighbour or Classifier Journal of Information & Computational Science 9: 6 (2012) 1429–1436.
+Zhang, J. and Mani, I.(2003)  kNN approach to unbalanced data distributions a case study involving information extraction Proceedings of Workshop on Learning from Imbalanced Datasets. 2003.
+Zhang, M. and Zhou Z.(2007) ML-KNN: A lazy learning approach to multi-label learning. Pattern recognition, 2007, 40(7): 2038-2048.
+Zhang, S. (2012) Nearest neighbor selection for iteratively kNN imputation. Journal of Systems and Software, 2012, 85(11): 2541-2552.
 
